@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import image from "/Users/ranatuncer/tasks/src/images/baby.JPG";
 
 function App(): JSX.Element {
     return (
@@ -7,6 +8,8 @@ function App(): JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript - Rana Tuncer
             </header>
+            <h1>This is me on discord</h1>
+            <img src={image} alt="My discord profile pic" />
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Hello World
