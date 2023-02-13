@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import image from "/Users/ranatuncer/tasks/src/images/baby.JPG";
+import image from "./images/baby.jpeg";
+import { Button } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
@@ -8,8 +9,23 @@ function App(): JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript - Rana Tuncer
             </header>
-            <h1>This is me on discord</h1>
+            <h1>
+                <span style={{ color: "blue" }}>This is me on discord</span>
+            </h1>
             <img src={image} alt="My discord profile pic" />
+            <p>
+                List of My Favorite Foods:
+                <ul>
+                    <li>Chicken Tikka Masala</li>
+                    <li>Soup</li>
+                    <li>Pasta</li>
+                </ul>
+            </p>
+            <div>
+                <Button onClick={() => console.log("I am logged")}>
+                    Log Hello World
+                </Button>
+            </div>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Hello World
@@ -17,5 +33,4 @@ function App(): JSX.Element {
         </div>
     );
 }
-
 export default App;
