@@ -13,14 +13,12 @@ function App(): JSX.Element {
                 <span style={{ color: "blue" }}>This is me on discord</span>
             </h1>
             <img src={image} alt="My discord profile pic" />
-            <p>
-                List of My Favorite Foods:
-                <ul>
-                    <li>Chicken Tikka Masala</li>
-                    <li>Soup</li>
-                    <li>Pasta</li>
-                </ul>
-            </p>
+            List of My Favorite Foods:
+            <ul>
+                <li>Chicken Tikka Masala</li>
+                <li>Soup</li>
+                <li>Pasta</li>
+            </ul>
             <div>
                 <Button onClick={() => console.log("I am logged")}>
                     Log Hello World
