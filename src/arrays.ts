@@ -5,7 +5,11 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    let newArr: number[] = [];
+    if (numbers.length !== 0) {
+        newArr = [...newArr, numbers[0], numbers[numbers.length - 1]];
+    }
+    return newArr;
 }
 
 /**
@@ -36,12 +40,13 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    const words = amounts.map((num: string): number =>
-        isNaN(Number(num.slice(1, num.length + 1)))
-            ? 0
-            : Number(num.slice(1, num.length + 1))
+    const words = amounts.map((dollar: string): string =>
+        dollar.charAt(0) === "$" ? dollar.slice(1, dollar.length + 1) : dollar
     );
-    return words;
+    const nums = words.map((num: string): number =>
+        isNaN(Number(num)) ? 0 : Number(num)
+    );
+    return nums;
 };
 
 /**
@@ -64,7 +69,8 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const nums = words.filter((word: string): boolean => word.length < 4);
+    return nums.length;
 }
 
 /**
@@ -73,7 +79,11 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const result = colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "blue" || color === "green"
+    );
+    return result;
 }
 
 /**
