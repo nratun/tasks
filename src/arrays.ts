@@ -37,9 +37,9 @@ export function stringsToIntegers(numbers: string[]): number[] {
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
     const words = amounts.map((num: string): number =>
-        isNaN(Number(num.slice(1, num.length)))
+        isNaN(Number(num.slice(1, num.length + 1)))
             ? 0
-            : Number(num.slice(1, num.length))
+            : Number(num.slice(1, num.length + 1))
     );
     return words;
 };
