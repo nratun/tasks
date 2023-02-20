@@ -1,3 +1,4 @@
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -94,7 +95,14 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const sum = addends.reduce((total: number, num: number) => total + num, 0);
+    let equation: string;
+    if (addends.length !== 0) {
+        equation = String(sum) + "=" + addends.join("+");
+    } else {
+        equation = "0=0";
+    }
+    return equation;
 }
 
 /**
@@ -107,5 +115,19 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const negIndex = values.findIndex((num: number): boolean => num < 0);
+    let sumArr: number[];
+    let newVals = [...values];
+    if (negIndex !== -1) {
+        sumArr = values.slice(0, negIndex);
+    } else {
+        sumArr = [...values];
+    }
+    const sum = sumArr.reduce((total: number, num2: number) => total + num2, 0);
+    if (negIndex !== -1) {
+        newVals = newVals.splice(negIndex + 1, 0, sum);
+    } else {
+        newVals = [...newVals, sum];
+    }
+    return newVals;
 }
