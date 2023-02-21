@@ -119,6 +119,7 @@ export function injectPositive(values: number[]): number[] {
     let sumArr: number[];
     let newVals = [...values];
     if (negIndex !== -1) {
+        //Tried using reduce to create a new array that went up until negative num
         sumArr = values.slice(0, negIndex);
     } else {
         sumArr = [...values];
