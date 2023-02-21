@@ -1,4 +1,3 @@
-
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -119,9 +118,7 @@ export function injectPositive(values: number[]): number[] {
     let sumArr: number[];
     let newVals = [...values];
     if (negIndex !== -1) {
-        //Tried using reduce to create a new array that went up until negative num
         sumArr = values.slice(0, negIndex);
-        //console.log(sumArr);
     } else {
         sumArr = [...values];
     }
