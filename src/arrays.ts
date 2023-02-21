@@ -121,12 +121,13 @@ export function injectPositive(values: number[]): number[] {
     if (negIndex !== -1) {
         //Tried using reduce to create a new array that went up until negative num
         sumArr = values.slice(0, negIndex);
+        //console.log(sumArr);
     } else {
         sumArr = [...values];
     }
     const sum = sumArr.reduce((total: number, num2: number) => total + num2, 0);
     if (negIndex !== -1) {
-        newVals = newVals.splice(negIndex + 1, 0, sum);
+        newVals.splice(negIndex + 1, 0, sum);
     } else {
         newVals = [...newVals, sum];
     }
