@@ -82,9 +82,9 @@ export function toMarkdown(question: Question): string {
             (ostring: string, opt: string) => ostring + "- " + opt + "\n",
             ""
         );
-        return output + option;
+        output = output + option;
     }
-    return output;
+    return output.trim();
 }
 
 /**
