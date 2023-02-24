@@ -6,7 +6,10 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    const published = questions.filter(
+        (question: Question): boolean => question.published
+    );
+    return published;
 }
 
 /**
@@ -15,7 +18,13 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const empty = questions.filter(
+        (question: Question): boolean =>
+            question.body !== "" &&
+            question.expected !== "" &&
+            question.options.length > 0
+    );
+    return empty;
 }
 
 /***
@@ -26,7 +35,13 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    const found = questions.find(
+        (question: Question): boolean => question.id === id
+    );
+    if (found === undefined) {
+        return null;
+    }
+    return found;
 }
 
 /**
@@ -34,7 +49,10 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const remove = questions.filter(
+        (question: Question): boolean => question.id !== id
+    );
+    return remove;
 }
 
 /***
@@ -42,14 +60,19 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const names = questions.map((question: Question): string => question.name);
+    return names;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const sum = questions.reduce(
+        (total: number, question: Question) => total + question.points,
+        0
+    );
+    return sum;
 }
 
 /***
