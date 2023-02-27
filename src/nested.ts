@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -169,7 +170,7 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    return [...questions, makeBlankQuestion(id, name, type)];
 }
 
 /***
@@ -182,7 +183,11 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const qlist = questions.map(
+        (question: Question): Question =>
+            question.id === targetId ? { ...question, name: newName } : question
+    );
+    return qlist;
 }
 
 /***
@@ -197,7 +202,15 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const qlist = questions.map(
+        (question: Question): Question =>
+            question.id === targetId
+                ? question.type === "multiple_choice_question"
+                    ? { ...question, type: newQuestionType, options: [] }
+                    : { ...question, type: newQuestionType }
+                : question
+    );
+    return qlist;
 }
 
 /**
@@ -216,7 +229,15 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const qlist = questions.map(
+        (question: Question): Question =>
+            question.id === targetId
+                ? targetOptionIndex === -1
+                    ? { ...question, options: [...question.options, newOption] } // eslint-disable-next-line prettier/prettier
+                    : { ...question, options: [...question.options].splice(targetOptionIndex, 1, newOption)}
+                : question
+    );
+    return qlist;
 }
 
 /***
@@ -230,5 +251,14 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    console.log(questions);
+    const ind = questions.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    console.log(ind);
+    if (ind === -1) {
+        return questions;
+    }
+    questions.splice(1 + ind, 0, duplicateQuestion(newId, questions[ind]));
+    return questions;
 }
