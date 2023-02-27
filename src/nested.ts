@@ -20,8 +20,8 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
     const empty = questions.filter(
         (question: Question): boolean =>
-            question.body !== "" &&
-            question.expected !== "" &&
+            question.body !== "" ||
+            question.expected !== "" ||
             question.options.length > 0
     );
     return empty;
@@ -79,7 +79,12 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    const count = questions.reduce(
+        (total: number, question: Question) =>
+            question.published === true ? total + question.points : total,
+        0
+    );
+    return count;
 }
 
 /***
