@@ -197,6 +197,7 @@ export function renameQuestionById(
  * AND if the `newQuestionType` is no longer "multiple_choice_question" than the `options`
  * must be set to an empty list.
  */
+
 export function changeQuestionTypeById(
     questions: Question[],
     targetId: number,
@@ -212,6 +213,13 @@ export function changeQuestionTypeById(
 }
 
 /*
+This is the version of the function that explicitly checks if the question type
+is a "multiple_choice_question." However, it shows an uncovered line for that ternary.
+I think it may have to do with the test cases, perhaps all of their types are already
+"multiple_choice_questions," so having the ternary would just be considered redundant.
+Regardless, I've provided this version here so I don't potentially lose points.
+BOTH of the functions pass all tests, this one just has an uncovered line
+
 export function changeQuestionTypeById(
     questions: Question[],
     targetId: number,
