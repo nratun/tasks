@@ -30,12 +30,12 @@ export function TwoDice(): JSX.Element {
     return (
         <div>
             <div>
-                <span>{left_die}</span>
-                <span>{right_die}</span>
+                <span data-testid="left-die">{left_die}</span>
+                <span data-testid="right-die">{right_die}</span>
+                <span data-testid="won">{win}</span>
                 <Button onClick={changeLeft}> Roll Left</Button>
                 <Button onClick={changeRight}> Roll Right</Button>
                 {result()}
-                <span>{win}</span>
             </div>
         </div>
     );
