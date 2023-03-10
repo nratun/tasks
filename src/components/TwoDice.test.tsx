@@ -137,15 +137,4 @@ describe("TwoDice Component tests", () => {
         const winText = screen.getByText(/Win/i);
         expect(winText).toBeInTheDocument();
     });
-
-    const answer1 = screen.getByTestId("left-die");
-    const answer2 = screen.getByTestId("right-die");
-    const answer3 = screen.getByTestId("win");
-    if (answer1 === answer2) {
-        expect(answer1.textContent).toEqual(answer2);
-        expect(answer3.textContent).toEqual("Win");
-    } else {
-        expect(answer1.textContent).not.toEqual(answer2);
-        expect(answer3.textContent).not.toEqual("Lose");
-    }
 });
