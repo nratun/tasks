@@ -6,10 +6,12 @@ import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
-
 function App(): JSX.Element {
     return (
         <div className="App">
+            <header className="App-header">
+                UD CISC275 with React Hooks and TypeScript - Rana Tuncer
+            </header>
             <hr></hr>
             <Counter></Counter>
             <hr />
