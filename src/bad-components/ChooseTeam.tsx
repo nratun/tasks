@@ -19,6 +19,7 @@ export function ChooseTeam(): JSX.Element {
             const newTeam: string[] = [...team, member];
             setTeam(newTeam);
         }
+        setAllOptions(allOptions);
     }
 
     function clearTeam() {
