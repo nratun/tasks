@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export function GiveAttempts(): JSX.Element {
     const [attempts, setAttempts] = useState<number>(3);
@@ -15,11 +15,12 @@ export function GiveAttempts(): JSX.Element {
     return (
         <div>
             <h3>Give Attempts</h3>
+            <span>Number of attempts: {attempts}</span>
             <Form.Group controlId="formGiveAttempts">
                 <Form.Label>Add More Attempts:</Form.Label>
                 <Form.Control
                     type="number"
-                    value={attempts}
+                    value={numRequest}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                         setNumRequests(event.target.value)
                     }
