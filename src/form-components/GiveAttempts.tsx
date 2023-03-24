@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
 export function GiveAttempts(): JSX.Element {
     const [attempts, setAttempts] = useState<number>(3);
-    const [numRequest, setNumRequests] = useState<number>(0);
-    
+    const [numRequest, setNumRequests] = useState<string>("");
+    const val = parseInt(numRequest) || 0;
+
+    function incAttempts(): void {
+        setAttempts(attempts + val);
+    }
+    function decAttempts(): void {
+        setAttempts(attempts - 1);
+    }
     return (
         <div>
+            <h3>Give Attempts</h3>
             <Form.Group controlId="formGiveAttempts">
                 <Form.Label>Add More Attempts:</Form.Label>
                 <Form.Control
                     type="number"
-                    value={}
+                    value={attempts}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                        setAttempts(attempts + numRequest)
+                        setNumRequests(event.target.value)
                     }
                 />
             </Form.Group>
-            <h3>Give Attempts</h3>
+            <Button onClick={decAttempts} disabled={attempts <= 0}>
+                use
+            </Button>
+            <Button onClick={incAttempts}>gain</Button>
         </div>
     );
 }
