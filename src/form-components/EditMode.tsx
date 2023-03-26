@@ -45,10 +45,8 @@ export function EditMode(): JSX.Element {
                                 disabled={!editMode}
                             />
                         </Form.Group>
-                    </div>
-                ) : (
-                    ""
-                )}
+                    </div> // eslint-disable-next-line prettier/prettier, no-extra-parens
+                ) : ("") }
             </span>
             <span style={{ visibility: editMode ? "hidden" : "visible" }}>
                 {name} {isStudent ? "is a" : "is not a"} student
